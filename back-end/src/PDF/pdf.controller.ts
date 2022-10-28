@@ -11,8 +11,10 @@ export class PDFController {
     @Get('/:url')
     @UseInterceptors(RedisInterceptor)
     @UseInterceptors(SendInterceptor)
-    create(@Param('url') url: string) {
-        return this.pdfService.get(url)
+    async create(@Param('url') url: string) {
+        console.log('ok');
+        
+        return await this.pdfService.get(url)
     }
 
 }

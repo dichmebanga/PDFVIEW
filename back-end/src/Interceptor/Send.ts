@@ -5,12 +5,15 @@ import { tap } from 'rxjs/operators';
 @Injectable()
 export class SendInterceptor implements NestInterceptor {
     async intercept(context: ExecutionContext, next: CallHandler<any>): Promise<Observable<any>> {
-        const res = context.switchToHttp().getResponse()
+        const res = await context.switchToHttp().getResponse()
         return next
             .handle()
             .pipe(
-                tap((result) => {
-                    res.send(result)
+                tap(async (result) => {
+                    console.log('4')
+                    await res.setHeader( 'Content-Type', 'application/pdf');
+                    await res.send(result)
+                    return result
                 }),
             );
     }

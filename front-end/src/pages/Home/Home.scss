@@ -5,17 +5,20 @@
     .key {
         width: 35%;
         height: 100vh;
-        background-color: gray;
+        background-color: white;
         display: flex;
         flex-direction: column;
         justify-content: space-around;
 
         button {
             font-size: 2rem;
-            background-color: #ff000038;
+            background-color: white;
+            border-radius: 20px;
+            width: 100%;
+            margin-right: 50px;
 
             &:hover {
-                color: blue;
+                color: green;
             }
         }
     }
