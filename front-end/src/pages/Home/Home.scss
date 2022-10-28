@@ -1,0 +1,29 @@
+.home-wrapper {
+    display: flex;
+    gap: 50px;
+
+    .key {
+        width: 35%;
+        height: 100vh;
+        background-color: white;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+
+        button {
+            font-size: 2rem;
+            background-color: white;
+            border-radius: 20px;
+            width: 100%;
+            margin-right: 50px;
+
+            &:hover {
+                color: green;
+            }
+        }
+    }
+
+    .pdf {
+        width: 40%;
+    }
+}
