@@ -1,0 +1,6 @@
+{
+  "dependencies": {
+    "@types/multer-gridfs-storage": "^4.0.5",
+    "multer-gridfs-storage": "^5.0.2"
+  }
+}

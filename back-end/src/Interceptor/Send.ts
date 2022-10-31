@@ -11,7 +11,7 @@ export class SendInterceptor implements NestInterceptor {
             .handle()
             .pipe(
                 tap(async (result) => {
-                    console.log('4')
+                    console.log('4 send res')
                     await res.setHeader( 'Content-Type', 'application/pdf');
                     await res.send(result)
                     return result
