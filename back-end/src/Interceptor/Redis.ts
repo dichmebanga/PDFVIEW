@@ -29,7 +29,7 @@ export class RedisInterceptor implements NestInterceptor {
     const data = await this.redis.getBuffer(url);
     if (data == null) {
       if (await this.redis.set(`${url}_mutex`, url, 'EX', 3, 'NX')) {
-        console.log('1');
+        console.log('1-interceptor-REDIS');
         return next.handle().pipe(
           tap(async (result) => {
             await this.redis.set(url, result);
@@ -38,25 +38,12 @@ export class RedisInterceptor implements NestInterceptor {
           }),
         );
       }
-      console.log('2');
+      console.log('2-callback-REDIS');
       await this.sleep(100);
-      return this.intercept(context, next);
+      return this.intercept(context, next); // return value callback
     }
-    console.log('3');
+    console.log('3-return data-REDIS');
     return of(data);
 
-    // const data = await this.redis.getBuffer(url)
-    // if (data) {
-    //     return of(data)
-    // }
-    // return next
-    // .handle()
-    // .pipe(
-    //     tap(async (result) => {
-    //         console.log('3')
-    //         await this.redis.set(url, result)
-    //         return result
-    //     }),
-    // );
   }
 }
